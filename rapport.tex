@@ -7,6 +7,7 @@
 \title{Spécification d'un gestionnaire de services}
 
 \begin{document}
+
 \maketitle
 
 \section{Introduction}
@@ -37,27 +38,22 @@ quand à l'utilisation de B, et plus spécifiquement d'AtelierB.
 
 \section{Analyse}
 
-    \subsection{Les éléments du système}
-        Pour pouvoir répondre aux conditions du système, nous devons manipuler les concepts suivants :
+\subsection{Les éléments du système}
 
-        \begin{itemize}
-            \item processus : un processus identifié par un numéro
-            \item service : un service est utilisé par un processus
-            \item profile : un processus possède un profil ; un service peut filtrer les processus autorisés via leur profil
-        \end{itemize}
+Pour pouvoir répondre aux conditions du système, nous devons manipuler les
+concepts suivants:
 
+\begin{itemize}
+  \item processus: un processus identifié par un numéro;
+  \item service: un service est utilisé par un processus;
+  \item profile: un processus possède un profil; un service peut filtrer les
+    processus autorisés via leur profil.
+\end{itemize}
 
-    \subsection{Première itération sur l'architecture}
-        Les concepts \emph{processus} et \emph{profile} sont intimement liés.
-        Nous allons donc séparer la conception en deux parties : d'un côté la
-        gestion des processus et de leur profil, de l'autre la gestion des
-        services.
-
-        Dans la partie processus, il doit être possible de créer et de supprimer
-        un processus, d'y associer un profil.
-
-        Dans la partie service, il doit être possible de déclarer un service, de
-        l'activer, d'y associer les profils autorisés, d'inscrire des processus à un service.
+\subsection{Première itération sur l'architecture}
+Les concepts \emph{processus} et \emph{profile} sont intimement liés. Nous
+allons donc séparer la conception en deux parties: d'un côté la gestion des
+processus et de leur profil, de l'autre la gestion des services.
 
     \subsection{Machine composite}
 
@@ -80,7 +76,12 @@ quand à l'utilisation de B, et plus spécifiquement d'AtelierB.
     développement pour assurer une meilleure qualité.
 
 
+Dans la partie processus, il doit être possible de créer et de supprimer un
+processus, d'y associer un profil.
 
+Dans la partie service, il doit être possible de déclarer un service, de
+l'activer, d'y associer les profils autorisés, d'inscrire des processus à un
+service.
 
 \end{document}
 
