@@ -7,6 +7,12 @@
 \title{Spécification d'un gestionnaire de services}
 
 \begin{document}
+
+%% Puces au lieu de tirets dans les listes:
+\renewcommand{\labelitemi}{\textbullet}
+\renewcommand{\labelitemii}{\textbullet}
+\renewcommand{\labelitemiii}{\textbullet}
+
 \maketitle
 
 \section{Introduction}
@@ -43,10 +49,10 @@ Pour pouvoir répondre aux conditions du système, nous devons manipuler les
 concepts suivants:
 
 \begin{itemize}
-  \item processus: un processus identifié par un numéro
-  \item service: un service est utilisé par un processus
+  \item processus: un processus identifié par un numéro;
+  \item service: un service est utilisé par un processus;
   \item profile: un processus possède un profil; un service peut filtrer les
-    processus autorisés via leur profil
+    processus autorisés via leur profil.
 \end{itemize}
 
 \subsection{Première itération sur l'architecture}
