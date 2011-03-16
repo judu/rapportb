@@ -3,19 +3,39 @@
 \usepackage{fontspec}
 \usepackage[frenchb]{babel}
 
-
 \author{Julien \textsc{Durillon} \and Alexandre \textsc{Garnier}}
 \title{Spécification d'un gestionnaire de services}
 
 \begin{document}
 \maketitle
 
-
-
 \section{Introduction}
 
+Dans le cadre du module de \emph{Construction formelle du logiciel en B} du
+Master ALMA de l'Université de Nantes, nous avons eu à concevoir la
+spécification formelle en B d'un système des gestion de services au sein d'un
+OS.\\
 
+Il s'agit plus précisément d'une architecture basée sur un ensemble de services
+accessibles par un nombre variable de processus, selon que ces services soient
+en accès exclusif ou inclusif. L'accès aux services exclusifs devra être basé
+sur des profils de processus, de sorte que seuls les processus dont le profil
+est reconnu par un service pourront utiliser celui-ci.
+
+Ce faisant, on distingue trois concepts principaux au sein du projet, à savoir
+les services, les processus et les profils. Dès lors, dans notre travail de
+conception puis de spécification, nous avons eu pour objectif principal de
+refléter cette telle répartition.\\
+
+Dans la suite, après une analyse plus avancée du sujet, nous présenterons la
+spécification formelle des différents aspects attendus du logiciel, ainsi que
+les différents raffinements et implantations opérées.
+
+Enfin, nous discuterons de la solution finale, des problèmes encontrés dans sa
+conception, et des avantages et inconvénients que nous avons pu mettre à jour
+quand à l'utilisation de B, et plus spécifiquement d'AtelierB.
 
 \section{}
 
 \end{document}
+
