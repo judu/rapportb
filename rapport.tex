@@ -51,11 +51,20 @@ concepts suivants:
 \end{itemize}
 
 \subsection{Première itération sur l'architecture}
+    Dans la première version, nous avons commencé par créer une machine pour
+    gérer les processus, leurs profiles et les services. Nous nous sommes rendus
+    compte que cette version était lourde et peu adaptée.
+
+\subsection{Deuxième version : modularisation}
 Les concepts \emph{processus} et \emph{profile} sont intimement liés. Nous
 allons donc séparer la conception en deux parties: d'un côté la gestion des
 processus et de leur profil, de l'autre la gestion des services.
 
-    \subsection{Machine composite}
+
+    \subsubsection{ProcManager}
+        La machine ProcManager définit le concept de \emph{processus} et celui de \emph{profile}.
+
+\subsection{Machine composite}
 
         Pour gérer les différents éléments, une machine Système doit être faite.
         Elle va définir les actions haut-niveau qui utiliseront les processus et
@@ -63,8 +72,6 @@ processus et de leur profil, de l'autre la gestion des services.
 
 
 \section{Spécification}
-
-    \subsection{}
 
 
 
