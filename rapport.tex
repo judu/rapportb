@@ -102,7 +102,7 @@ lié.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=0.4\textwidth]{proc_profile.png}
-  \caption{$proc\_profile: processus \rightarrow profiles$}
+  \caption{$proc\_profile: processus \fun profiles$}
   \label{fig:proc_profile}
 \end{figure}
 
@@ -128,7 +128,7 @@ attendue dans la gestion de services.
     \begin{figure}[htb]
       \centering
       \includegraphics[width=0.4\textwidth]{type_service.png}
-      \caption{$type\_service: services \rightarrow TYPE$}
+      \caption{$type\_service: services \fun TYPE$}
       \label{fig:type_service}
     \end{figure}
 
@@ -144,7 +144,7 @@ attendue dans la gestion de services.
     \begin{figure}[htb]
       \centering
       \includegraphics[width=0.4\textwidth]{acces_service.png}
-      \caption{$acces\_service: services \rightarrow ACCES$}
+      \caption{$acces\_service: services \fun ACCES$}
       \label{fig:acces_service}
     \end{figure}
 
@@ -174,7 +174,7 @@ attendue dans la gestion de services.
     \begin{figure}[htb]
       \centering
       \includegraphics[width=0.4\textwidth]{serv_profiles.png}
-      \caption{$serv\_profiles: serv\_contraints \rightarrow FIN(PROFILES)$}
+      \caption{$serv\_profiles: serv\_contraints \fun FIN(PROFILES)$}
       \label{fig:serv_profiles}
     \end{figure}
 
@@ -191,7 +191,7 @@ attendue dans la gestion de services.
     \begin{figure}[htb]
       \centering
       \includegraphics[width=0.4\textwidth]{serv_proc.png}
-      \caption{$serv\_subscribed: services \leftrightarrow PROCESSUS$}
+      \caption{$serv\_subscribed: services \rel PROCESSUS$}
       \label{fig:serv_subscribed}
     \end{figure}
 
@@ -206,7 +206,7 @@ attendue dans la gestion de services.
     l'utiliser en même temps, et un processus peut utiliser plusieurs services à
     la fois.\\
 
-    La relation $serv\_binded: services \leftrightarrow PROCESSUS$ est
+    La relation $serv\_binded: services \rel PROCESSUS$ est
     dès lors similaire à la figure \ref{fig:serv_subscribed}.
 
 \end{enumerate}
@@ -214,6 +214,7 @@ attendue dans la gestion de services.
 \subsection{Opérations des machines}
 
 \section{Organisation du travail}
+
 Plusieurs aspects nous ont poussés à travailler ensemble sur le projet: la
 gestion des projets dans AtelierB ne nous permettait pas un partage simple des
 fichiers de projets; la méthode B nous étant encore assez étrangère, nous avons
@@ -228,6 +229,22 @@ l'activer, d'y associer les profils autorisés, d'inscrire des processus à un
 service.
 
 \section{Conclusion}
+
+Tout au long du déroulement de ce projet, la principale difficulté aura été la
+maîtrise du langage de spécification B au travers du logiciel AtelierB.
+
+En effet, si les avantages apportés par la conception d'une preuve formelle d'un
+logiciel sont indéniables du point de vue de la correction et de l'efficacité de
+celui-ci, la redondance de code entre les différentes machines, raffinements et
+implémentations est un inconvénient non négligeable.
+De plus, le fait de devoir relancer l'ensemble des preuves dès lors qu'on
+modifie l'un ou l'autre des fichiers --- dont certaines qui doivent être
+effectuées via le prouveur interactif --- ne joue pas dans la simplicité
+d'utilisation du logiciel.
+
+Au-delà de ça, n'ayant pas réussi à mener à bien la preuve d'une boucle \emph
+{WHILE}, nous n'avons pu implémenter l'ensemble de nos machines, et ce faisant
+générer le code correspondant.
 
 \end{document}
 
