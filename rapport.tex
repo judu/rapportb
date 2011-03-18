@@ -1,4 +1,4 @@
-\documentclass[french, titlepage, 11pt, a4paper]{article}
+\documentclass[french, titlepage, 10pt, a4paper]{article}
 \usepackage{xunicode}
 \usepackage{fontspec}
 \usepackage[frenchb]{babel}
@@ -7,6 +7,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{kpfonts}
 \usepackage[usenames,dvipsnames]{color}
+\usepackage{zed}
 
 \renewcommand{\nobreakspace}{\nobreak\ }
 
@@ -102,16 +103,132 @@ services.
 
 \subsection{Ensembles et relations: diagrammes d'Euler-Venn}
 
+Dans la spécification formelle du projet, nous avons d'emblée veillé à ce que
+les concepts de services, processus et profils soient formalisés sous forme
+d'ensembles, respectivement \emph{services}, \emph{processus} et
+\emph{profiles}.
+
 \subsubsection{Gestionnaire de processus}
+
+Dans la gestion des processus, apparaît la notion de profil d'un processus.
+Tout processus est lié à un profil, cependant plusieurs processus peuvent
+partager un même profil.
+En outre, un profil n'a pas de raison d'exister si aucun processus ne lui est
+lié.
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.7\textwidth]{proc_profile.png}
-  \caption{proc\_profile: processus $\rightarrow$ profiles}
+  \includegraphics[width=0.4\textwidth]{proc_profile.png}
+  \caption{$proc\_profile: processus \rightarrow profiles$}
   \label{fig:proc_profile}
 \end{figure}
 
+Dès lors, nous avons formalisé une fonction totale de \emph{processus} vers
+\emph{profiles}, telle que l'illustre la figure \ref{fig:proc_profile}.
+
 \subsubsection{Gestionnaire de services}
+
+Dans le cadre du gestionnaire de services, les relations entre ensembles
+deviennent dès lors plus nombreuses, dans la mesure où sont réutilisées ici les
+concepts de processus et de profils afin de mieux satisfaire à la modularité
+attendue dans la gestion de services.
+
+\begin{enumerate}
+
+  \item Type d'un service:
+
+    Tout service a un type d'accès, définissant si l'accès à ce service est
+    contraint ou libre.
+    Un service contraint devra spécifier les profils de processus pouvant
+    l'utiliser.
+
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[width=0.4\textwidth]{type_service.png}
+      \caption{$type\_service: services \rightarrow TYPE$}
+      \label{fig:type_service}
+    \end{figure}
+
+    La figure \ref{fig:type_service} montre la fonction liant un service à son
+    type.
+
+  \item Accès d'un service:
+
+    L'accès à un service permet de spécifier si plusieurs processus peuvent
+    faire appel à ce service en même temps (accès inclusif) ou non (accès
+    exclusif).
+
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[width=0.4\textwidth]{acces_service.png}
+      \caption{$acces\_service: services \rightarrow ACCES$}
+      \label{fig:acces_service}
+    \end{figure}
+
+    La figure \ref{fig:acces_service} montre la fonction liant un service à son
+    accès.
+
+  \item État d'un service:
+
+    L'état d'un service permet de gérer la disponibilité ou non de celui-ci.
+    Le service sera dès lors respectivement actif ou inactif.
+
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[width=0.4\textwidth]{etat_service.png}
+      \caption{$etat\_service: services \pfun ETAT$}
+      \label{fig:etat_service}
+    \end{figure}
+
+    La figure \ref{fig:etat_service} montre la fonction liant un service à son
+    état.
+
+  \item Profils que reconnaît un service contraint:
+
+    Un service contraint est lié à un ou plusieurs profils de processus qui
+    pourront dès lors l'utiliser.
+
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[width=0.4\textwidth]{serv_profiles.png}
+      \caption{$serv\_profiles: serv\_contraints \rightarrow FIN(PROFILES)$}
+      \label{fig:serv_profiles}
+    \end{figure}
+
+    La figure \ref{fig:serv_profiles} montre la fonction liant un service
+    contraint à ses profils de processus.
+
+  \item Souscription d'un processus à un service:
+
+    Un processus doit pouvoir souscrire à un service, afin de pouvoir l'utiliser
+    ensuite.
+    Plusieurs processus peuvent souscrire à un même service, et un processus
+    peut souscrire à plusieurs services.
+
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[width=0.4\textwidth]{serv_proc.png}
+      \caption{$serv\_subscribed: services \leftrightarrow PROCESSUS$}
+      \label{fig:serv_subscribed}
+    \end{figure}
+
+    La figure \ref{fig:serv_subscribed} montre la relations liant des services
+    à des processus leur ayant souscrit.
+
+  \item Utilisation d'un service par un processus:
+
+    Un processus doit dès lors être en mesure d'utiliser un service auquel il a
+    souscrit.
+    Pour peu que l'accès à un service soit inclusif, plusieurs processus peuvent
+    l'utiliser en même temps, et un processus peut utiliser plusieurs services à
+    la fois.\\
+
+    La relation $serv\_binded: services \leftrightarrow PROCESSUS$ est
+    dès lors similaire à la figure \ref{fig:serv_subscribed}.
+
+\end{enumerate}
+
+\subsection{Opérations des machines}
 
 \section{Organisation du travail}
 Plusieurs aspects nous ont poussés à travailler ensemble sur le projet: la
