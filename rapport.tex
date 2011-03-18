@@ -93,11 +93,22 @@ concepts suivants:
             \end{itemize}
 
 
-\subsection{Machine composite}
+        \subsubsection{Machine composite}
 
-Pour gérer les différents éléments, une machine Système doit être faite.
-Elle va définir les actions haut-niveau qui utiliseront les processus et les
-services.
+
+            Dans les deux machines décrites précédemment, des opérations sont
+            définies qui ne fonctionnent que dans un cas chacune. Le but est de
+            fournir des opérations unitaires.
+
+            Pour gérer les différents éléments et cas, une machine Système doit être faite.
+            Elle va définir les actions haut-niveau qui utiliseront les processus et les
+            services.
+
+            Dans ces actions haut-niveau, nous effectuons des tests qui nous
+            permettent d'appeler une opération d'une des deux machines plus
+            haut, et ainsi de relier les deux aspects.
+
+
 
 \section{Spécification}
 
