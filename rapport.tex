@@ -58,22 +58,39 @@ concepts suivants:
     processus autorisés via leur profil.
 \end{itemize}
 
-\subsection{Première itération sur l'architecture}
+    \subsection{Première itération sur l'architecture}
 
-Dans la première version, nous avons commencé par créer une machine pour gérer
-les processus, leurs profils et les services.
-Nous nous sommes rendus compte que cette version était lourde et peu adaptée.
+        Dans la première version, nous avons commencé par créer une machine pour gérer
+        les processus, leurs profils et les services.
+        Nous nous sommes rendus compte que cette version était lourde et peu adaptée.
 
-\subsection{Deuxième version : modularisation}
+    \subsection{Deuxième version : modularisation}
 
-Les concepts \emph{processus} et \emph{profile} sont intimement liés.
-Nous allons donc séparer la conception en deux parties: d'un côté la gestion des
-processus et de leur profil, de l'autre la gestion des services.
+        Les concepts \emph{processus} et \emph{profile} sont intimement liés.
+        Nous allons donc séparer la conception en deux parties: d'un côté la gestion des
+        processus et de leur profil, de l'autre la gestion des services.
 
-\subsubsection{ProcManager}
+        \subsubsection{ProcManager}
 
-La machine ProcManager définit le concept de \emph{processus} et celui de
-\emph{profile}.
+            La machine ProcManager définit le concept de \emph{processus} et celui de
+            \emph{profile}. On peut ici:
+
+                \begin{itemize}
+                    \item ajouter un processus au système;
+                    \item associer un processus à un profil;
+                    \item enlever un processus du système.
+                \end{itemize}
+
+        \subsubsection{ServManager}
+            La machine ServManager définit le concept de service, ainsi que les opérations suivantes:
+
+            \begin{itemize}
+                \item ajouter/enlever un service;
+                \item associer des profils à un service;
+                \item activer/désactiver un service;
+                \item enregistrer un processus sur un service;
+            \end{itemize}
+
 
 \subsection{Machine composite}
 
@@ -90,7 +107,7 @@ services.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=0.7\textwidth]{proc_profile.png}
-  \caption{proc\_profile: processus --> profiles}
+  \caption{proc\_profile: processus $\rightarrow$ profiles}
   \label{fig:proc_profile}
 \end{figure}
 
