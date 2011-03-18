@@ -59,28 +59,56 @@ concepts suivants:
     processus autorisés via leur profil.
 \end{itemize}
 
-\subsection{Première itération sur l'architecture}
+    \subsection{Première itération sur l'architecture}
 
-Dans la première version, nous avons commencé par créer une machine pour gérer
-les processus, leurs profils et les services.
-Nous nous sommes rendus compte que cette version était lourde et peu adaptée.
+        Dans la première version, nous avons commencé par créer une machine pour gérer
+        les processus, leurs profils et les services.
+        Nous nous sommes rendus compte que cette version était lourde et peu adaptée.
 
-\subsection{Deuxième version : modularisation}
+    \subsection{Deuxième version : modularisation}
 
-Les concepts \emph{processus} et \emph{profile} sont intimement liés.
-Nous allons donc séparer la conception en deux parties: d'un côté la gestion des
-processus et de leur profil, de l'autre la gestion des services.
+        Les concepts \emph{processus} et \emph{profile} sont intimement liés.
+        Nous allons donc séparer la conception en deux parties: d'un côté la gestion des
+        processus et de leur profil, de l'autre la gestion des services.
 
-\subsubsection{ProcManager}
+        \subsubsection{ProcManager}
 
-La machine ProcManager définit le concept de \emph{processus} et celui de
-\emph{profile}.
+            La machine ProcManager définit le concept de \emph{processus} et celui de
+            \emph{profile}. On peut ici:
 
-\subsection{Machine composite}
+                \begin{itemize}
+                    \item ajouter un processus au système;
+                    \item associer un processus à un profil;
+                    \item enlever un processus du système.
+                \end{itemize}
 
-Pour gérer les différents éléments, une machine Système doit être faite.
-Elle va définir les actions haut-niveau qui utiliseront les processus et les
-services.
+        \subsubsection{ServManager}
+            La machine ServManager définit le concept de service, ainsi que les opérations suivantes:
+
+            \begin{itemize}
+                \item ajouter/enlever un service;
+                \item associer des profils à un service;
+                \item activer/désactiver un service;
+                \item enregistrer un processus sur un service;
+            \end{itemize}
+
+
+        \subsubsection{Machine composite}
+
+
+            Dans les deux machines décrites précédemment, des opérations sont
+            définies qui ne fonctionnent que dans un cas chacune. Le but est de
+            fournir des opérations unitaires.
+
+            Pour gérer les différents éléments et cas, une machine Système doit être faite.
+            Elle va définir les actions haut-niveau qui utiliseront les processus et les
+            services.
+
+            Dans ces actions haut-niveau, nous effectuons des tests qui nous
+            permettent d'appeler une opération d'une des deux machines plus
+            haut, et ainsi de relier les deux aspects.
+
+
 
 \section{Spécification}
 
