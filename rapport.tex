@@ -1,9 +1,14 @@
-\documentclass[french, 11pt, a4paper]{article}
+\documentclass[french, titlepage, 11pt, a4paper]{article}
 \usepackage{xunicode}
 \usepackage{fontspec}
 \usepackage[frenchb]{babel}
-\usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{kpfonts}
+\usepackage[usenames,dvipsnames]{color}
+
+\renewcommand{\nobreakspace}{\nobreak\ }
 
 \author{Julien \textsc{Durillon} \and Alexandre \textsc{Garnier}}
 \title{Spécification d'un gestionnaire de services}
@@ -84,8 +89,8 @@ services.
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.4\textwidth]{proc_profile.png}
-  \caption{proc_profile: processus --> profiles}
+  \includegraphics[width=0.7\textwidth]{proc_profile.png}
+  \caption{proc\_profile: processus --> profiles}
   \label{fig:proc_profile}
 \end{figure}
 
@@ -104,6 +109,8 @@ processus, d'y associer un profil.
 Dans la partie service, il doit être possible de déclarer un service, de
 l'activer, d'y associer les profils autorisés, d'inscrire des processus à un
 service.
+
+\section{Conclusion}
 
 \end{document}
 
